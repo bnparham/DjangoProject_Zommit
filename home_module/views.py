@@ -4,4 +4,4 @@ from django.views.generic.base import TemplateView
 # Create your views here.
 
 class HomePageView(TemplateView):
-    pass
+    template_name = "shared/_layout.html"
