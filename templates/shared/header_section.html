@@ -1,4 +1,4 @@
-<!-- |----header Section----| -->
+
 <header>
         <!-- /---hot menu---/ -->
         <div id="hotMenu">
@@ -291,7 +291,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="me-auto px-lg-2 py-4"><a href="#">
+                    <li class="me-auto px-lg-2 py-4"><a href="{% url 'register_page' %}">
                         <i class="fa fa-user" style="font-size:24px"></i>
                     </a></li>
                     <li class="px-lg-2 py-4"><a href="#">
@@ -595,7 +595,7 @@
                         </ul>
                     </li>
                     <li id="login-register" class="subMegaMenu">
-                        <a class="p-3 d-flex justify-content-end" href="#">
+                        <a class="p-3 d-flex justify-content-end" href="{% url 'register_page' %}">
                             ورود | عضویت
                             <i class="ms-2 fa fa-user-o" style="font-size:20px"></i>
                         </a>
@@ -620,4 +620,3 @@
             </div>
         </div>
 </header>
-<!-- |----header Section----| -->
