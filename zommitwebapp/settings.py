@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_render_partial',
     #  ---- web modules ----
     'home_module',
+    'account_module',
 
 ]
 
@@ -79,6 +80,8 @@ WSGI_APPLICATION = 'zommitwebapp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
+AUTH_USER_MODEL = "account_module.User"
 
 DATABASES = {
     'default': {
