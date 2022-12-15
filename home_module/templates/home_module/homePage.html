@@ -1,0 +1,28 @@
+{% extends "shared/_layout.html" %}
+{% load static %}
+{% load render_partial %}
+
+{% block content %}
+<body>
+     <!-- |----grid-item Section----|  -->
+    {% render_partial "home_module.views.GridItemSection_Component" %}
+     <!-- |----grid-item Section----|  -->
+
+    <!-- |----feature news Section----|  -->
+    {% render_partial "home_module.views.FeatureNewsSection_Component" %}
+    <!-- |----feature news Section----|  -->
+
+    <!-- |----body Section----|  -->
+    {% render_partial "home_module.views.BodySection_Component" %}
+    <!-- |----body Section----|  -->
+
+    <!-- |----guid Section----|  -->
+    {% render_partial "home_module.views.GuidSection_Component" %}
+    <!-- |----guid Section----|  -->
+
+    <!-- |----review Section----|  -->
+    {% render_partial "home_module.views.ReviewSection_Component" %}
+    <!-- |----review Section----|  -->
+</body>
+
+{% endblock %}
