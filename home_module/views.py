@@ -6,6 +6,10 @@ from django.views.generic.base import TemplateView
 class HomePageView(TemplateView):
     template_name = "home_module/homePage.html"
 
+class ConatctUsView(TemplateView):
+    template_name = "home_module/contactUs.html"
+
+# --- layout components ----
 class HeaderSection_Component(TemplateView):
     template_name = "shared/header_section.html"
 
@@ -26,3 +30,4 @@ class GuidSection_Component(TemplateView):
 
 class ReviewSection_Component(TemplateView):
     template_name = "shared/review_section.html"
+# --- layout components ----

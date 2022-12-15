@@ -10,6 +10,9 @@
     <title>Document</title>
     {#  --- header urls ---  #}
     {% include "shared/includes/header_urls.html" %}
+    {% block header %}{% endblock %}
+
+
 </head>
     <!-- |----header Section----| -->
     {% render_partial "home_module.views.HeaderSection_Component" %}
@@ -24,5 +27,6 @@
 
     {#  --- footer urls ---  #}
     {% include "shared/includes/footer_urls.html" %}
+    {% block footer %}{% endblock %}
 
 </html>
