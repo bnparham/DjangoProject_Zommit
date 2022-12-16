@@ -291,15 +291,36 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="me-auto px-lg-2 py-4"><a href="{% url 'register_page' %}">
-                        <i class="fa fa-user" style="font-size:24px"></i>
-                    </a></li>
-                    <li class="px-lg-2 py-4"><a href="#">
-                        <i class="fa fa-share-alt" style="font-size:24px"></i>
-                    </a></li>
-                    <li class="px-lg-2 py-4"><a href="#">
-                        <i class="fa fa-search" style="font-size:24px"></i>
-                    </a></li>
+                    {% if not request.user.is_authenticated %}
+                        <li id="nav-ico1" class="me-auto px-lg-2 py-4">
+                            <a href="{% url 'register_page' %}">
+                                <i class="fa fa-user" style="font-size:24px"></i>
+                            </a>
+                        </li>
+                        <li id="nav-ico2" class="px-lg-2 py-4">
+                            <a href="#">
+                                <i class="fa fa-share-alt" style="font-size:24px"></i>
+                            </a>
+                        </li>
+                        <li id="anv-ico3" class="px-lg-2 py-4">
+                            <a href="#">
+                                <i class="fa fa-search" style="font-size:24px"></i>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li id="anv-ico4" class="me-auto px-lg-2 py-4"">
+                        <a href="#">
+                            <span>{{ request.user.username }}</span>کاربر
+                            <i class="fa fa-user" style="font-size:24px"></i>
+                        </a>
+                        </li>
+                        <li id="anv-ico3" class="px-lg-2 py-4">
+                            <a href="{% url 'logout_page' %}">
+                            <span>خروج</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
                 </ul>
             </div>
         </nav>

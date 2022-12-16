@@ -48,10 +48,13 @@ class LoginVeiw(View):
     def get(self, request):
         login_form = Login_Form()
         register_msg = request.session.get("register_msg", False)
+        logout_msg = request.session.get("logout_msg", False)
         if(register_msg): del(request.session["register_msg"])
+        if(logout_msg): del(request.session["logout_msg"])
         context = {
             "login_form": login_form,
-            "register_msg": register_msg
+            "register_msg": register_msg,
+            "logout_msg": logout_msg
         }
         if(request.user.is_authenticated):
             return redirect(reverse("home-page"))
@@ -79,3 +82,10 @@ class LoginVeiw(View):
             "login_form": login_form
         }
         return render(request, "account_module/login_page.html", context)
+
+class logoutView(View):
+    def get(self, request):
+        logout(request)
+        request.session["logout_msg"] = True
+        request.session.set_expiry(1)
+        return redirect(reverse("login_page"))
