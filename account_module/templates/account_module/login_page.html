@@ -42,6 +42,11 @@
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
+                {% if register_msg %}
+                    <div class="alert alert-success mb-5">
+                    حساب شما با موفقیت ساخته شد ، از قسمت زیر میتوانید وارد شوید
+                    </div>
+                {% endif %}
               <h2 class="text-uppercase text-center mb-5">ورود به حساب کاربری</h2>
               <form action="{% url 'register_page' %}" method="post">
                 {% csrf_token %}
