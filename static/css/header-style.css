@@ -57,6 +57,7 @@ ul{
     color : #fff
 }
 #main-megaMenu{
+    z-index: 100 !important;
     top: 74px;
     right: 10px;
     text-align: right;

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-ثبت نام
+ورود به حساب
 {% endblock %}
 
 {% block header %}
@@ -42,45 +42,28 @@
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">ساخت حساب کاربری</h2>
+              <h2 class="text-uppercase text-center mb-5">ورود به حساب کاربری</h2>
               <form action="{% url 'register_page' %}" method="post">
                 {% csrf_token %}
                 <div class="form-outline mb-4">
 {#                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />#}
-                    {{ register_form.email }}
+                    {{ login_form.email }}
                   <label class="form-label" for="form3Example3cg">ایمیل</label>
-                    {% if register_form.email.errors %}
-                        <div class="alert alert-danger my-1">
-                            {{ register_form.email.errors }}
-                        </div>
-                    {% endif %}
                 </div>
 
                 <div class="form-outline mb-4">
 {#                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />#}
-                    {{ register_form.password }}
+                    {{ login_form.password }}
                   <label class="form-label" for="form3Example4cg">رمز عبور</label>
-                </div>
-
-                <div class="form-outline mb-4">
-{#                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />#}
-                    {{ register_form.repeat_password }}
-                  <label class="form-label" for="form3Example5cdg">تکرار رمز عبور</label>
-                    {% if register_form.repeat_password.errors %}
-                        <div class="alert alert-danger my-1">
-                            {{ register_form.repeat_password.errors }}
-                        </div>
-                    {% endif %}
-
                 </div>
 
                 <div class="d-flex justify-content-center">
                   <button type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">ثبت نام
+                    class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">ورود به حساب
                   </button>
                 </div>
-                <p class="text-center text-muted mt-5 mb-0">حساب کاربری دارید؟ <a href="{% url 'login_page' %}"
-                    class="fw-bold text-body"><u>وارد شوید</u></a></p>
+                <p class="text-center text-muted mt-5 mb-0">حساب کاربری ندارید؟ <a href="{% url 'register_page' %}"
+                    class="fw-bold text-body"><u>ثبت نام کنید</u></a></p>
               </form>
             </div>
           </div>
