@@ -8,9 +8,12 @@ class ArticleCategory(models.Model):
     url_title = models.CharField(max_length=200,unique=True, verbose_name="عنوان  دسته بندی در url")
     is_active = models.BooleanField(default=True, verbose_name="فعال / غیرفعال")
 
-class Article_mainTable(models.Model):
-    article_category = models.ForeignKey("ArticleCategory", on_delete=models.CASCADE)
-    article = models.ForeignKey("Article", on_delete=models.CASCADE)
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "دسته بندی مقالات"
+        verbose_name_plural = "دسته بندی های مقالات"
 
 class Article(models.Model):
     title = models.CharField(max_length=300, verbose_name="عنوان مقاله")
@@ -19,5 +22,11 @@ class Article(models.Model):
     short_description = models.TextField(verbose_name="توضحیات مختصر")
     text = models.TextField(verbose_name="توضیحات مقاله")
     is_active = models.BooleanField(default=True, verbose_name="فعال / غیرفعال")
-    selected_categories = models.ManyToManyField(to="ArticleCategory", verbose_name="دسته بندی های مقاله", through="Article_mainTable")
+    selected_categories = models.ManyToManyField(to="ArticleCategory", verbose_name="دسته بندی های مقاله")
 
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "مقاله"
+        verbose_name_plural = "مقالات"
