@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #  ---- web modules ----
     'home_module',
     'account_module',
+    'article_module'
 
 ]
 
