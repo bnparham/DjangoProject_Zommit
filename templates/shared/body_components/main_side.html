@@ -1,0 +1,43 @@
+<div id="main-side" class="col-md-9 col-lg-6">
+                <!-- title -->
+                <div class="card">
+                    <div id="side-header" class="p-2 col-12">
+                        مطالب جدید
+                    </div>
+                </div>
+                <!-- posts -->
+                {% for article in article_list %}
+                    <div class="card px-2 py-3">
+                    <div class="row g-0">
+                        <div class="col-4 p-0">
+                            <a href="#">
+                                <img src="{{ article.image.url }}" class="img-fluid" alt="...">
+                            </a>
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body p-2 pe-3">
+                                <a href="#">
+                                    <h6 class="card-subtitle text-muted">{{ article.selected_categories.first }}</h6>
+                                </a>
+                                <a href="#">
+                                    <h5 class="py-2 card-title">
+                                        {{ article.title }}
+                                    </h5>
+                                </a>
+                                <a href="">
+                                    <h6 class="card-author">
+                                        مبین احمدی | ۰۹:۴۵ ۱۴۰۱/۰۵/۱۹ | + دیدگاه
+                                    </h6>
+                                </a>
+                                <a href="#">
+                                    <p class="py-2 card-text">
+                                        {{ article.short_description }}
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
