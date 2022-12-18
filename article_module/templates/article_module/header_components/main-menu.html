@@ -1,0 +1,390 @@
+<!-- /---main menu on lg and bigger---/ -->
+<nav id="mainMenu" class="main-lg w-100" style="z-index:1000;">
+    <div class="container">
+        <ul class="d-none d-lg-flex flex-row-reverse">
+            <li class="px-lg-2 px-md-1 py-4">
+                <a href="{% url 'home-page' %}">
+                    <img id="brand" src="https://www.zoomit.ir/Themes/Zoomit.ir/UI/src/mediaFiles/img/zoomit_logo_h.svg" alt="">
+                </a>
+            </li>
+            <li class="px-lg-2 py-4">
+                <a href="#">
+                    <i class=""></i>
+                    محصولات
+                </a>
+            </li>
+            {% for main_cat in main_categories %}
+                {% if main_cat.articlecategory_set.all %}
+            <li class="main-subMegaMenu px-lg-2 py-4 position-relative">
+                <a href="#">
+                    <i class="fa fa-caret-down"></i>
+                    {{ main_cat.title }}
+                </a>
+                <ul id="main-megaMenu" class="d-none d-lg-none flex-column position-absolute pe-4 py-3 ps-3">
+                    {% for sub_cat in main_cat.articlecategory_set.all %}
+                    <li class="p-1">
+                        <a href="#">
+                            {{ sub_cat.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+                {% else %}
+            <li class="main-subMegaMenu px-lg-2 py-4">
+                <a href="#">
+                    {{ main_cat.title }}
+                </a>
+            </li>
+                 {% endif %}
+            {% endfor %}
+
+            {% if not request.user.is_authenticated %}
+                <li id="nav-ico1" class="me-auto px-lg-2 py-4">
+                    <a href="{% url 'register_page' %}">
+                        <i class="fa fa-user" style="font-size:24px"></i>
+                    </a>
+                </li>
+                <li id="nav-ico2" class="px-lg-2 py-4">
+                    <a href="#">
+                        <i class="fa fa-share-alt" style="font-size:24px"></i>
+                    </a>
+                </li>
+                <li id="anv-ico3" class="px-lg-2 py-4">
+                    <a href="#">
+                        <i class="fa fa-search" style="font-size:24px"></i>
+                    </a>
+                </li>
+            {% else %}
+                <li id="anv-ico4" class="me-auto px-lg-2 py-4"">
+                <a href="#">
+                    <span>{{ request.user.username }}</span>کاربر
+                    <i class="fa fa-user" style="font-size:24px"></i>
+                </a>
+                </li>
+                <li id="anv-ico3" class="px-lg-2 py-4">
+                    <a href="{% url 'logout_page' %}">
+                    <span>خروج</span>
+                    </a>
+                </li>
+            {% endif %}
+
+        </ul>
+    </div>
+</nav>
+<!-- /---main menu on md and smaller---/ -->
+<div id="mainMenu">
+    <div class="container-fluid">
+        <div class="d-flex d-lg-none flex-row-reverse justify-content-between">
+            <a id="navIco" class="py-3" href="#">
+                <i class="fa fa-navicon" style="font-size:24px"></i>
+            </a>
+            <a class="py-3" href="{% url 'home-page' %}">
+                <img id="brand" src="https://www.zoomit.ir/Themes/Zoomit.ir/UI/src/mediaFiles/img/zoomit_logo_h.svg" alt="">
+            </a>
+            <a class="py-3" href="#">
+                <i class="fa fa-search" style="font-size:24px"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- /---main menu list on md and smaller---/ -->
+<div id="menuList">
+    <div class="container-fluid">
+        <ul id="menuList-ul" class="d-none d-lg-none flex-column" style="text-align:right;">
+            <li class="subMegaMenu">
+                <a class="p-3 d-flex justify-content-between align-items-center" href="#">
+                    <i class="" style="font-size:12px"></i>
+                    محصولات
+                </a>
+            </li>
+            <li class="subMegaMenu">
+                <a class="p-3 d-flex justify-content-between align-items-center" href="#">
+                    <i class="fa fa-caret-left" style="font-size:12px"></i>
+                    زومیت
+                </a>
+                <!-- /---li megaMenu---/ -->
+                <ul id="megaMenu" class="d-none d-lg-none flex-column position-absolute w-100">
+                    <li class="p-3">
+                        <a href="#">
+                            تبلیغات
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            درباره ما
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            تماس با ما
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            استخدام
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="subMegaMenu">
+                <a class="p-3 d-flex justify-content-between align-items-center" href="#">
+                    <i class="fa fa-caret-left" style="font-size:12px"></i>
+                    فناوری
+                </a>
+            </li>
+            <li class="subMegaMenu">
+                <a class="p-3 d-flex justify-content-between align-items-center" href="#">
+                    <i class="fa fa-caret-left" style="font-size:12px"></i>
+                    برسی
+                </a>
+                <!-- /---li megaMenu---/ -->
+                <ul id="megaMenu" class="d-none d-lg-none flex-column position-absolute w-100">
+                    <li class="p-3">
+                        <a href="#">
+                           برسی موبایل
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            برسی لپتاپ
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            برسی پوشیدنی ها
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            برسی تبلت
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            برسی تلویزیون
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            برسی اسپیکر
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            برسی ویدیویی
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            همه برسی ها
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="subMegaMenu">
+                <a class="p-3 d-flex justify-content-between align-items-center" href="#">
+                    <i class="fa fa-caret-left" style="font-size:12px"></i>
+                    ویدیو
+                </a>
+                <!-- /---li megaMenu---/ -->
+                <ul id="megaMenu" class="d-none d-lg-none flex-column position-absolute w-100">
+                    <li class="p-3">
+                        <a href="#">
+                           برسی ویدیویی
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            نگاه نزدیک
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            زوم کست
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            ویدیو خودرو
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            هایلایت
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            جعبه گشایی
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            60 ثانیه
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            گزارش ویدویی
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li  class="subMegaMenu">
+                <a class="p-3 d-flex justify-content-between align-items-center" href="#">
+                    <i class="fa fa-caret-left" style="font-size:12px"></i>
+                    خودرو
+                </a>
+                <!-- /---li megaMenu---/ -->
+                <ul id="megaMenu" class="d-none d-lg-none flex-column position-absolute w-100">
+                    <li class="p-3">
+                        <a href="#">
+                           اخبار خودرو
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            مقالات خودرو
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            قیمت و شرایط فروش خودرو
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            ویدیو خودرو
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            آموزش خودرو
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            موتور اسپورت
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li  class="subMegaMenu">
+                <a class="p-3 d-flex justify-content-between align-items-center" href="#">
+                    <i class="" style="font-size:12px"></i>
+                    راهنمای خرید
+                </a>
+            </li>
+            <li class="subMegaMenu">
+                <a class="p-3 d-flex justify-content-between align-items-center" href="#">
+                    <i class="fa fa-caret-left" style="font-size:12px"></i>
+                    علمی
+                </a>
+                <!-- /---li megaMenu---/ -->
+                <ul id="megaMenu" class="d-none d-lg-none flex-column position-absolute w-100">
+                    <li class="p-3">
+                        <a href="#">
+                           نجوم
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            پزشکی و سلامت
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                           علوم پایه و مهندسی
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            انرژی و محیط زیست
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="subMegaMenu">
+                <a class="p-3 d-flex justify-content-between align-items-center" href="#">
+                    <i class="fa fa-caret-left" style="font-size:12px"></i>
+                    کسب و کار
+                </a>
+                <!-- /---li megaMenu---/ -->
+                <ul id="megaMenu" class="d-none d-lg-none flex-column position-absolute w-100">
+                    <li class="p-3">
+                        <a href="#">
+                           بیوگرافی
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            مصاحبه
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                           بازاریابی اینترنتی
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="subMegaMenu">
+                <a class="p-3 d-flex justify-content-between align-items-center" href="#">
+                    <i class="fa fa-caret-left" style="font-size:12px"></i>
+                    زوم پلاس
+                </a>
+                <!-- /---li megaMenu---/ -->
+                <ul id="megaMenu" class="d-none d-lg-none flex-column position-absolute w-100">
+                    <li class="p-3">
+                        <a href="#">
+                           شاتر
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                           پازل
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                          معماری
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            گوناگون
+                        </a>
+                    </li>
+                    <li class="p-3">
+                        <a href="#">
+                            بازی
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li id="login-register" class="subMegaMenu">
+                <a class="p-3 d-flex justify-content-end" href="{% url 'register_page' %}">
+                    ورود | عضویت
+                    <i class="ms-2 fa fa-user-o" style="font-size:20px"></i>
+                </a>
+            </li>
+            <li id="social-icons" class="subMegaMenu">
+                <div id="wrapper" class="d-flex flex-row-reverse" href="#">
+                    <a href="#">
+                        <i class="fa fa-telegram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-youtube-play"></i>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
