@@ -10,4 +10,6 @@ class User(AbstractUser):
         verbose_name_plural = "کاربران"
 
     def __str__(self):
+        if self.first_name is not "" and self.last_name is not "" :
+            return self.get_full_name()
         return self.email

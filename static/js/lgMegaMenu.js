@@ -30,7 +30,7 @@ mainMegaMenu.forEach(el => {
 // ----|main mega menu|----
 all_mianMegaMenus = document.querySelectorAll(".main-subMegaMenu")
 all_mianMegaMenus.forEach(el =>
-    el.addEventListener("click" , function(){
+    el.addEventListener("mouseenter" , function(){
         if(this.childElementCount == 2){
             // close other mega menus when clicking
             all_mianMegaMenus.forEach(el => {
@@ -65,3 +65,11 @@ all_mianMegaMenus.forEach(el =>
         }
    }),
 )
+
+body_tag = document.getElementById("mainMenu")
+body_tag.addEventListener("click", function(){
+    console.log("hi");
+    all_mianMegaMenus.forEach(el=>
+        el.lastElementChild.classList.add("d-lg-none","all")
+        )
+})

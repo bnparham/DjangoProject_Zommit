@@ -17,7 +17,18 @@
     <!-- |----feature news Section----|  -->
 
     <!-- |----body Section----|  -->
-    {% render_partial "home_module.views.BodySection_Component" %}
+    <section id="body">
+    <div class="container">
+        <div class="row" style="text-align:center; direction: rtl;">
+        <!-- /---right side---/ -->
+        {% render_partial "article_module.views.body_right_sideView" %}
+        <!-- /---main side---/ -->
+            {% block main-side %}{% endblock %}
+        <!-- /---left side---/ -->
+        {% render_partial "article_module.views.body_left_sideView" %}
+        </div>
+    </div>
+</section>
     <!-- |----body Section----|  -->
 
     <!-- |----guid Section----|  -->

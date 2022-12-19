@@ -1,8 +1,12 @@
+{% extends "home_module/homePage.html" %}
+
+{% block main-side %}
 <div id="main-side" class="col-md-9 col-lg-6">
                 <!-- title -->
                 <div class="card">
                     <div id="side-header" class="p-2 col-12">
                         مطالب جدید
+                        {{ arg1 }}
                     </div>
                 </div>
                 <!-- posts -->
@@ -41,3 +45,5 @@
                 {% endfor %}
 
             </div>
+{% endblock %}
+

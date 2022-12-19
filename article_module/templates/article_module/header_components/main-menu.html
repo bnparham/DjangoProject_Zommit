@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li class="px-lg-2 py-4">
-                <a href="#">
+                <a href="{% url 'home-page' %}">
                     <i class=""></i>
                     محصولات
                 </a>
@@ -17,14 +17,14 @@
             {% for main_cat in main_categories %}
                 {% if main_cat.articlecategory_set.all %}
             <li class="main-subMegaMenu px-lg-2 py-4 position-relative">
-                <a href="#">
+                <a href="{% url 'home-page-by-category' category=main_cat.url_title %}">
                     <i class="fa fa-caret-down"></i>
                     {{ main_cat.title }}
                 </a>
                 <ul id="main-megaMenu" class="d-none d-lg-none flex-column position-absolute pe-4 py-3 ps-3">
                     {% for sub_cat in main_cat.articlecategory_set.all %}
                     <li class="p-1">
-                        <a href="#">
+                        <a href="{% url 'home-page-by-category' category=sub_cat.url_title %}">
                             {{ sub_cat.title }}
                         </a>
                     </li>
@@ -57,7 +57,7 @@
                     </a>
                 </li>
             {% else %}
-                <li id="anv-ico4" class="me-auto px-lg-2 py-4"">
+                <li id="anv-ico4" class="me-auto px-lg-2 py-4">
                 <a href="#">
                     <span>{{ request.user.username }}</span>کاربر
                     <i class="fa fa-user" style="font-size:24px"></i>
