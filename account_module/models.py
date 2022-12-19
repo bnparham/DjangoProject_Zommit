@@ -3,7 +3,7 @@ from django.db import models
 
 class User(AbstractUser):
     mobile = models.CharField(max_length=20)
-    email_activation_code = models.CharField(max_length=100, verbose_name="ایمیل فعال سازی")
+    email_activation_code = models.CharField(max_length=100, verbose_name="کد فعال سازی")
 
     class Meta:
         verbose_name = "کاربر"

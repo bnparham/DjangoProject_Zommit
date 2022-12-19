@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+from account_module.models import User
+
 
 class ArticleCategory(models.Model):
     parent = models.ForeignKey("ArticleCategory",null=True,blank=True,on_delete=models.CASCADE ,verbose_name="دسته بندی")
@@ -23,6 +25,7 @@ class Article(models.Model):
     text = models.TextField(verbose_name="توضیحات مقاله")
     is_active = models.BooleanField(default=True, verbose_name="فعال / غیرفعال")
     selected_categories = models.ManyToManyField(to="ArticleCategory", verbose_name="دسته بندی های مقاله")
+    author = models.ForeignKey(User, verbose_name="نویسنده", null=True, editable=False, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
