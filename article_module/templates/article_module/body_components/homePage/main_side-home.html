@@ -1,0 +1,72 @@
+{#--homePage--#}
+{% extends "home_module/homePage.html" %}
+{% load jalali_tags %}
+
+{% block title %}
+    {% if request.path == "/" %}
+        صفحه اصلی
+        {% else %}
+        {{ url_persian_title }}
+    {% endif %}
+{% endblock %}
+
+{% block main-side %}
+<div id="main-side" class="col-md-9 col-lg-6">
+                <!-- title -->
+                <div class="card">
+                    <div id="side-header" class="p-2 col-12">
+                    {% if request.path == "/" %}
+                        مطالب جدید
+                        {% else %}
+                           مطالب بخش
+                        {{ url_persian_title }}
+                    {% endif %}
+                    </div>
+                </div>
+                <!-- posts -->
+                {% for article in article_list %}
+                    <div class="card px-2 py-3">
+                    <div class="row g-0">
+                        <div class="col-4 p-0">
+                            <a href="{% url 'detail-page' slug=article.slug %}">
+                                <img src="{{ article.image.url }}" class="img-fluid" alt="...">
+                            </a>
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body p-2 pe-3">
+                                <div style="display: flex;flex-direction: row">
+                                    {% for cat in article.selected_categories.all %}
+                                        <a href="{% url 'home-page-by-category' category=cat.url_title %}">
+                                        {% if article.selected_categories.last == cat %}
+                                            <h6 class="card-subtitle text-muted"> {{ cat.title }} </h6>
+                                            {% else %}
+                                            <h6 class="card-subtitle text-muted"> {{ cat.title }} , </h6>
+                                        {% endif %}
+                                        </a>
+                                        {% endfor %}
+                                </div>
+                                <a href="{% url 'detail-page' slug=article.slug %}">
+                                    <h5 class="py-2 card-title">
+                                        {{ article.title }}
+                                    </h5>
+                                </a>
+                                <a href="#">
+                                    <h6 class="card-author" style="font-family: IranSans">
+{#                                        {{article.author}} | ۰۹:۴۵ ۱۴۰۱/۰۵/۱۹ | + دیدگاه#}
+                                        {{article.author}} | {{ article.create_date | to_jalali}}  | + دیدگاه
+                                    </h6>
+                                </a>
+                                <a href="{% url 'detail-page' slug=article.slug %}">
+                                    <p class="py-2 card-text">
+                                        {{ article.short_description }}
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+{% endblock %}
+

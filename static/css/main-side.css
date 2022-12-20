@@ -32,3 +32,6 @@
 #main-side .card .card-author{
     color: #abaaaa;
 }
+.category_link h6:hover{
+    color: #a52834 !important;
+}

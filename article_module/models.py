@@ -26,6 +26,7 @@ class Article(models.Model):
     is_active = models.BooleanField(default=True, verbose_name="فعال / غیرفعال")
     selected_categories = models.ManyToManyField(to="ArticleCategory", verbose_name="دسته بندی های مقاله")
     author = models.ForeignKey(User, verbose_name="نویسنده", null=True, editable=False, on_delete=models.CASCADE)
+    create_date = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد", editable=False)
 
     def __str__(self):
         return self.title

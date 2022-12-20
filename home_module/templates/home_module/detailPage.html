@@ -1,0 +1,22 @@
+{% extends "shared/_layout.html" %}
+{% load static %}
+{% load render_partial %}
+
+{% block content %}
+<body>
+
+    <!-- |----body Section----|  -->
+    <section id="body" class="mt-3">
+    <div class="container">
+        <div class="row" style="text-align:center; direction: rtl;">
+            {% render_partial "article_module.views.body_right_sideView" %}
+        <!-- /---main side---/ -->
+            {% block main-side %}{% endblock %}
+        </div>
+    </div>
+</section>
+    <!-- |----body Section----|  -->
+
+</body>
+
+{% endblock %}

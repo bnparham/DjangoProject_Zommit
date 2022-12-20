@@ -5,4 +5,5 @@ from .views import *
 urlpatterns = [
     path('', body_main_sideView.as_view(), name="home-page"),
     path("articles/cat/<str:category>", body_main_sideView.as_view(), name="home-page-by-category"),
+    path("articles/<slug:slug>", detailPageView.as_view(), name="detail-page"),
 ]

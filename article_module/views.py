@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.shortcuts import render,redirect
 from django.urls import reverse
-from django.views.generic import ListView
+from django.views.generic import ListView,DetailView
 from django.views.generic.base import TemplateView
 from .models import Article, ArticleCategory
 # Create your views here.
@@ -9,7 +9,7 @@ from home_module.views import HomePageView
 
 class body_main_sideView(ListView):
     model = Article
-    template_name = "article_module/body_components/main_side.html"
+    template_name = "article_module/body_components/homePage/main_side-home.html"
 
     def get_queryset(self):
         query = super(body_main_sideView, self).get_queryset()
@@ -18,12 +18,24 @@ class body_main_sideView(ListView):
             query = query.filter(selected_categories__url_title__iexact=category_name)
         return query
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(body_main_sideView, self).get_context_data()
+        url_title = self.kwargs.get("category", None)
+        if(url_title):
+            title = ArticleCategory.objects.filter(url_title=url_title).values("title")[0].get("title")
+            context["url_persian_title"] = title
+        return context
+
+class detailPageView(DetailView):
+    model = Article
+    template_name = "article_module/body_components/detailPage/main_side-details.html"
+
 
 class body_right_sideView(TemplateView):
-    template_name = "article_module/body_components/right_side.html"
+    template_name = "article_module/body_components/homePage/right_side.html"
 
 class body_left_sideView(TemplateView):
-    template_name = "article_module/body_components/left_side.html"
+    template_name = "article_module/body_components/homePage/left_side.html"
 
 
 
