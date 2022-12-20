@@ -24,9 +24,15 @@
                 <ul id="main-megaMenu" class="d-none d-lg-none flex-column position-absolute pe-4 py-3 ps-3">
                     {% for sub_cat in main_cat.articlecategory_set.all %}
                     <li class="p-1">
+                    {% if sub_cat.is_article %}
                         <a href="{% url 'home-page-by-category' category=sub_cat.url_title %}">
                             {{ sub_cat.title }}
                         </a>
+                    {% else %}
+                        <a href="{{ sub_cat.url_title }}">
+                            {{ sub_cat.title }}
+                        </a>
+                    {% endif %}
                     </li>
                     {% endfor %}
                 </ul>

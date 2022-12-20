@@ -15,7 +15,7 @@ class body_main_sideView(ListView):
         query = super(body_main_sideView, self).get_queryset()
         category_name = self.kwargs.get("category")
         if(category_name is not None):
-            query = query.filter(selected_categories__url_title__iexact=category_name)
+            query = query.filter(selected_categories__url_title__iexact=category_name, is_active=True)
         return query
 
     def get_context_data(self, *, object_list=None, **kwargs):

@@ -9,6 +9,7 @@ class ArticleCategory(models.Model):
     title = models.CharField(max_length=200, verbose_name="عنوان دسته بندی")
     url_title = models.CharField(max_length=200,unique=True, verbose_name="عنوان  دسته بندی در url")
     is_active = models.BooleanField(default=True, verbose_name="فعال / غیرفعال")
+    is_article = models.BooleanField(default=True, verbose_name="مقاله میباشد")
 
     def __str__(self):
         return self.title
