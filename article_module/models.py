@@ -29,6 +29,7 @@ class Article(models.Model):
     author = models.ForeignKey(User, verbose_name="نویسنده", null=True, editable=False, on_delete=models.CASCADE)
     create_date = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد", editable=False)
     view_count = models.IntegerField(default=0, verbose_name="تعداد بازدید")
+    is_suggest = models.BooleanField(default=False, verbose_name="پیشنهاد سردبیر")
 
     def __str__(self):
         return self.title

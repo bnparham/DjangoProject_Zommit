@@ -41,11 +41,16 @@ class body_right_sideView(ListView):
     def get_queryset(self):
         query = super(body_right_sideView, self).get_queryset()
         query = query.order_by("-view_count")[:5]
-        print(query)
         return query
 
-class body_left_sideView(TemplateView):
+class body_left_sideView(ListView):
+    model = Article
     template_name = "article_module/body_components/homePage/left_side.html"
+    
+    def get_queryset(self):
+        query = super(body_left_sideView, self).get_queryset()
+        query = query.filter(selected_categories__url_title__iexact="howto")[:5]
+        return query
 
 
 
