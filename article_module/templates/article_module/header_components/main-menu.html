@@ -39,7 +39,7 @@
             </li>
                 {% else %}
             <li class="main-subMegaMenu px-lg-2 py-4">
-                <a href="#">
+                <a href="{% url 'home-page-by-category' category=main_cat.url_title %}" >
                     {{ main_cat.title }}
                 </a>
             </li>

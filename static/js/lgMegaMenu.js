@@ -68,8 +68,12 @@ all_mianMegaMenus.forEach(el =>
 
 body_tag = document.getElementById("mainMenu")
 body_tag.addEventListener("click", function(){
-    console.log("hi");
     all_mianMegaMenus.forEach(el=>
-        el.lastElementChild.classList.add("d-lg-none","all")
+        {
+        if(el.lastElementChild.matches("ul")){
+            el.lastElementChild.classList.add("d-lg-none","all")
+        };
+    }
+
         )
 })
