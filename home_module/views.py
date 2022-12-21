@@ -57,7 +57,7 @@ class ReviewSection_Component(ListView):
     
     def get_queryset(self):
         query = super(ReviewSection_Component, self).get_queryset()
-        query = query.filter(selected_categories__url_title__iexact="review")[:5]
+        query = query.filter(selected_categories__url_title__iexact="review").order_by("-create_date")[:6]
         return query
 
 # --- layout components ----

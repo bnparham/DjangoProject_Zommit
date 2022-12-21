@@ -43,7 +43,8 @@
         flex-direction: row-reverse;
     }
     #review .review-post .card .card-img-top{
-        width: fit-content;
+        width: 206px;
+        height: 145px;
         padding: 10px;
     }
     #review .col-sm-12{

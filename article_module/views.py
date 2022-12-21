@@ -15,7 +15,7 @@ class RedirectHome(View):
 class body_main_sideView(ListView):
     model = Article
     template_name = "article_module/body_components/homePage/main_side-home.html"
-    paginate_by = 7
+    paginate_by = 8
 
     def get_queryset(self):
         query = super(body_main_sideView, self).get_queryset()
