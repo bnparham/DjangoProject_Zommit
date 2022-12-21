@@ -13,7 +13,7 @@ class articleCategory_admin(admin.ModelAdmin):
     ]
 
 class article_admin(admin.ModelAdmin):
-    list_display = ["title", "slug", "get_category", "is_active", "author"]
+    list_display = ["title", "slug", "get_category", "is_active", "author", "view_count"]
     list_editable = ["is_active"]
     list_filter = [
         ("selected_categories", admin.RelatedOnlyFieldListFilter)

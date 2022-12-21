@@ -28,6 +28,7 @@ class Article(models.Model):
     selected_categories = models.ManyToManyField(to="ArticleCategory", verbose_name="دسته بندی های مقاله")
     author = models.ForeignKey(User, verbose_name="نویسنده", null=True, editable=False, on_delete=models.CASCADE)
     create_date = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد", editable=False)
+    view_count = models.IntegerField(default=0, verbose_name="تعداد بازدید")
 
     def __str__(self):
         return self.title

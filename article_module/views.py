@@ -13,6 +13,7 @@ class body_main_sideView(ListView):
 
     def get_queryset(self):
         query = super(body_main_sideView, self).get_queryset()
+        query = query.order_by("-create_date")
         category_name = self.kwargs.get("category")
         if(category_name is not None):
             query = query.filter(selected_categories__url_title__iexact=category_name, is_active=True)
@@ -31,8 +32,16 @@ class detailPageView(DetailView):
     template_name = "article_module/body_components/detailPage/main_side-details.html"
 
 
-class body_right_sideView(TemplateView):
+class body_right_sideView(ListView):
+    # most-view articles
+    model = Article
     template_name = "article_module/body_components/homePage/right_side.html"
+
+    def get_queryset(self):
+        query = super(body_right_sideView, self).get_queryset()
+        query = query.order_by("-view_count")[:5]
+        print(query)
+        return query
 
 class body_left_sideView(TemplateView):
     template_name = "article_module/body_components/homePage/left_side.html"
