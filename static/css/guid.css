@@ -29,6 +29,7 @@
 
 #guid .card-body{
     font-family: "IranSans";
+    height: 100px !important;
 }
 
 #guid .card-title{

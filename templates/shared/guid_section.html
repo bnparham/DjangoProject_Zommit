@@ -9,7 +9,12 @@
                 <div class="row d-flex flex-row-reverse">
                     <div id="article" class="guid-section col-md-12 col-lg-3 ">
                         <a href="" class="p-3">
-                            <h3 class="my-3">بهترین گوشی های موبایل بازار ایران [مرداد ماه ۱۴۰۱]
+                            <h3 class="my-3">
+                                {% for article in article_list %}
+                                    {% if article.slug == "best-tablet-buying-guide" %}
+                                        {{ article.title }}
+                                    {% endif %}
+                                {% endfor %}
                             </h3>
                             <p>
                                 در مقاله‌ی پیش‌ رو قصد داریم در قالب راهنمای خرید جامع، بهترین گوشی‌های بازار ایران را در بازه‌های قیمتی مختلف معرفی کنیم. با زومیت همراه باشید.
@@ -23,73 +28,20 @@
                     </div>
                     <div id="posts" class="guid-section col-md-12 col-lg-9">
                         <div class="row d-flex flex-row-reverse">
+                            {% for article in article_list %}
                             <div class="guid-post col-md-6 col-lg-4 pb-0">
                                 <div class="card">
-                                    <a href="">
-                                        <img src="static/imgs/feature-news/post2.jpg" class="card-img-top" alt="...">
+                                    <a href="{% url 'detail-page' slug=article.slug %}">
+                                        <img src="{{article.image.url}}" class="card-img-top" alt="{{ article.title }}">
                                         <div class="card-body my-4">
-                                            <h5 class="card-title">راهنمای خرید</h5>
-                                            <p class="card-text">تاریخ معرفی و عرضه آیفون 14 فاش شد؛ پرچمدار اپل احتمالاً زودتر از حد انتظار رونمایی می‌شود</p>
+                                            <h5 class="card-title" dir="rtl" style="line-height: 20px">{{article.title}}</h5>
+                                            <p class="card-text">
+                                               </p>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                            <div class="guid-post col-md-6 col-lg-4 pb-0">
-                                <div class="card">
-                                    <a href="">
-                                        <img src="static/imgs/feature-news/post2.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body my-4">
-                                            <h5 class="card-title">راهنمای خرید</h5>
-                                            <p class="card-text">تاریخ معرفی و عرضه آیفون 14 فاش شد؛ پرچمدار اپل احتمالاً زودتر از حد انتظار رونمایی می‌شود</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="guid-post col-md-6 col-lg-4 pb-0">
-                                <div class="card">
-                                    <a href="">
-                                        <img src="static/imgs/feature-news/post2.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body my-4">
-                                            <h5 class="card-title">راهنمای خرید</h5>
-                                            <p class="card-text">تاریخ معرفی و عرضه آیفون 14 فاش شد؛ پرچمدار اپل احتمالاً زودتر از حد انتظار رونمایی می‌شود</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="guid-post col-md-6 col-lg-4 pb-0">
-                                <div class="card">
-                                    <a href="">
-                                        <img src="static/imgs/feature-news/post2.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body my-4">
-                                            <h5 class="card-title">راهنمای خرید</h5>
-                                            <p class="card-text">تاریخ معرفی و عرضه آیفون 14 فاش شد؛ پرچمدار اپل احتمالاً زودتر از حد انتظار رونمایی می‌شود</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="guid-post col-md-6 col-lg-4 pb-0">
-                                <div class="card">
-                                    <a href="">
-                                        <img src="static/imgs/feature-news/post2.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body my-4">
-                                            <h5 class="card-title">راهنمای خرید</h5>
-                                            <p class="card-text">تاریخ معرفی و عرضه آیفون 14 فاش شد؛ پرچمدار اپل احتمالاً زودتر از حد انتظار رونمایی می‌شود</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="guid-post col-md-6 col-lg-4 pb-0">
-                                <div class="card">
-                                    <a href="">
-                                        <img src="static/imgs/feature-news/post2.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body my-4">
-                                            <h5 class="card-title">راهنمای خرید</h5>
-                                            <p class="card-text">تاریخ معرفی و عرضه آیفون 14 فاش شد؛ پرچمدار اپل احتمالاً زودتر از حد انتظار رونمایی می‌شود</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
+                            {% endfor %}
                         </div>
 
                     </div>

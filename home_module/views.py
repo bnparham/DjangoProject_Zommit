@@ -43,8 +43,13 @@ class FeatureNewsSection_Component(ListView):
 class BodySection_Component(TemplateView):
     template_name = "shared/body_section.html"
 
-class GuidSection_Component(TemplateView):
+class GuidSection_Component(ListView):
+    model = Article
     template_name = "shared/guid_section.html"
+    def get_queryset(self):
+        query = super(GuidSection_Component, self).get_queryset()
+        query = query.filter(selected_categories__url_title__iexact="buying-guide")[:6]
+        return query
 
 class ReviewSection_Component(TemplateView):
     template_name = "shared/review_section.html"
