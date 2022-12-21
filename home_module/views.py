@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 from django.views.generic.base import TemplateView
+
+from article_module.models import Article
 
 # Create your views here.
 
@@ -22,8 +25,14 @@ def FooterSection_Component(req):
 class GridItemSection_Component(TemplateView):
     template_name = "shared/gridItem_section.html"
 
-class FeatureNewsSection_Component(TemplateView):
+class FeatureNewsSection_Component(ListView):
+    model = Article
     template_name = "shared/featureNews_section.html"
+
+    def get_queryset(self):
+        query = super(FeatureNewsSection_Component, self).get_queryset()
+        query = query.filter(is_suggest=True)[:5]
+        return query
 
 class BodySection_Component(TemplateView):
     template_name = "shared/body_section.html"

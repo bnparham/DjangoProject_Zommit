@@ -6,56 +6,18 @@
                     <h3>پیشنهاد سردبیر</h3>
                 </div>
                 <div class="news col-12">
-                    <div id="news-post-1" class="news-post">
+                    {% for article in article_list %}
+                    <div id="news-post-{{ forloop.counter }}" class="news-post">
                         <div class="card">
-                            <a href="">
-                                <img src="static/imgs/feature-news/post1.jpg" class="card-img-top" alt="...">
+                            <a href="{% url 'detail-page' slug=article.slug %}">
+                                <img src="{{ article.image.url }}" class="card-img-top" alt="{{ article.title }}">
                                 <div class="card-body">
-                                    <p class="card-text">داستان طراحی لوگوی یک شرکت با هوش مصنوعی DALL-E 2</p>
+                                    <p class="card-text">{{ article.title}}</p>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div id="news-post-2" class="news-post">
-                        <div class="card">
-                            <a href="">
-                                <img src="static/imgs/feature-news/post2.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">تاریخ معرفی و عرضه آیفون 14 فاش شد؛ پرچمدار اپل احتمالاً زودتر از حد انتظار رونمایی می‌شود</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div id="news-post-3" class="news-post">
-                        <div class="card">
-                            <a href="">
-                                <img src="static/imgs/feature-news/post3.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">رجزخوانی بایدو برای تسلا: فناوری خودران ما یک نسل جلوتر از خودروساز بزرگ آمریکایی است</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div id="news-post-4" class="news-post">
-                        <div class="card">
-                            <a href="">
-                                <img src="static/imgs/feature-news/post4.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">سامسونگ با روشی هوشمندانه ظرفیت باتری گلکسی زد فلیپ ۴ را افزایش داده است</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div id="news-post-5" class="news-post">
-                        <div class="card">
-                            <a href="">
-                                <img src="static/imgs/feature-news/post5.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">چرا برخی افراد هرگز بیمار نمی‌شوند؟</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
