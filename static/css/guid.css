@@ -59,7 +59,9 @@
         flex-direction: row-reverse;
     }
     #guid .card .card-img-top{
-        width: fit-content;
+        /*width: fit-content;*/
+        width: 264px!important;
+        height: 164px!important;
         padding: 10px;
     }
 

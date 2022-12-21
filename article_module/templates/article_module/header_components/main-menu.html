@@ -79,6 +79,10 @@
         </ul>
     </div>
 </nav>
+
+
+
+
 <!-- /---main menu on md and smaller---/ -->
 <div id="mainMenu">
     <div class="container-fluid">
@@ -100,7 +104,7 @@
     <div class="container-fluid">
         <ul id="menuList-ul" class="d-none d-lg-none flex-column" style="text-align:right;">
             <li class="subMegaMenu">
-                <a class="p-3 d-flex justify-content-between align-items-center" href="#">
+                <a class="p-3 d-flex justify-content-between align-items-center" href="{% url 'home-page' %}">
                     <i class="" style="font-size:12px"></i>
                     محصولات
                 </a>
@@ -116,9 +120,15 @@
                 <ul id="megaMenu" class="d-none d-lg-none flex-column position-absolute w-100">
                     {% for sub_cat in main_cat.articlecategory_set.all %}
                     <li class="p-3">
-                        <a href="#">
+                    {% if sub_cat.is_article %}
+                        <a href="{% url 'home-page-by-category' category=sub_cat.url_title %}">
                             {{ sub_cat.title }}
                         </a>
+                    {% else %}
+                        <a href="{% url 'home-page' %}{{ sub_cat.url_title }}">
+                            {{ sub_cat.title }}
+                        </a>
+                    {% endif %}
                     </li>
                     {% endfor %}
                 </ul>

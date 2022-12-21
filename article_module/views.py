@@ -1,11 +1,16 @@
 from django.http import HttpRequest
 from django.shortcuts import render,redirect
 from django.urls import reverse
+from django.views import View
 from django.views.generic import ListView,DetailView
 from django.views.generic.base import TemplateView
 from .models import Article, ArticleCategory
 # Create your views here.
 from home_module.views import HomePageView
+
+class RedirectHome(View):
+    def get(self, request):
+        return redirect(reverse("home-page"))
 
 class body_main_sideView(ListView):
     model = Article

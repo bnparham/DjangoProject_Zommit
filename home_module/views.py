@@ -51,6 +51,13 @@ class GuidSection_Component(ListView):
         query = query.filter(selected_categories__url_title__iexact="buying-guide")[:6]
         return query
 
-class ReviewSection_Component(TemplateView):
+class ReviewSection_Component(ListView):
+    model = Article
     template_name = "shared/review_section.html"
+    
+    def get_queryset(self):
+        query = super(ReviewSection_Component, self).get_queryset()
+        query = query.filter(selected_categories__url_title__iexact="review")[:5]
+        return query
+
 # --- layout components ----
