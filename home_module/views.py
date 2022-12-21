@@ -22,8 +22,14 @@ def FooterSection_Component(req):
     return render(req, "shared/footer_section.html")
 
 
-class GridItemSection_Component(TemplateView):
+class GridItemSection_Component(ListView):
+    model = Article
     template_name = "shared/gridItem_section.html"
+
+    def get_queryset(self):
+        query = super(GridItemSection_Component, self).get_queryset()
+        query = query.filter(is_slider=True).order_by("title")[:5]
+        return query
 
 class FeatureNewsSection_Component(ListView):
     model = Article

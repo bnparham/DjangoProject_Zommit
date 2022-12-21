@@ -13,11 +13,11 @@ class articleCategory_admin(admin.ModelAdmin):
     ]
 
 class article_admin(admin.ModelAdmin):
-    list_display = ["title", "slug", "get_category", "is_active", "author", "view_count","is_suggest"]
-    list_editable = ["is_active","is_suggest"]
+    list_display = ["title", "slug", "get_category", "is_active", "author", "view_count","is_suggest", "is_slider"]
+    list_editable = ["is_active", "is_suggest", "is_slider"]
     list_filter = [
         ("selected_categories", admin.RelatedOnlyFieldListFilter)
-        , "is_active", "is_suggest"]
+        , "is_active", "is_suggest", "is_slider"]
     def get_category(self, obj):
         return [course.title for course in obj.selected_categories.all()]
     def save_model(self, request:HttpRequest, obj:Article, form, change):

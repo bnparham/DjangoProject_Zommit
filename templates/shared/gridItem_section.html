@@ -1,56 +1,26 @@
-
+{% load static %}
 <section id="grid-item-row" class="my-2">
     <div class="container">
         <div class="row" dir="rtl">
             <!-- /---slider section---/ -->
             <div class="col-md-9 slider">
-                <div id="slider-post-1" style="background-image:url('static/imgs/item-grid-row/1.jpg');" class="slider-post">
-                    <a href="">
+                {% for article in article_list %}
+                      <div id="slider-post-{{ forloop.counter }}" style="background-image:url('{{ article.image.url }}');" class="slider-post">
+                    <a href="{% url 'detail-page' slug=article.slug %}">
                         <p>
-                            معرفی نمایشگر ها از انواع تا هرچه که باید بدانید
+                            {{ article.title}}
                         </p>
                     </a>
                 </div>
-
-                <div id="slider-post-2" style="background-image:url('static/imgs/item-grid-row/2.jpg');" class="slider-post">
-                    <a href="">
-                        <p>
-                            آیا انیستاگرام اسکرین شات گرفتن از استوری را به کاربران اطلاع رسانی میکند
-                        </p>
-                    </a>
-                </div>
-
-                <div id="slider-post-3" style="background-image:url('static/imgs/item-grid-row/3.jpg');" class="slider-post">
-                    <a href="">
-                        <p>
-                            برسی موتورولا اج 30 پرو ( به همراه برسی ویدویی)
-                        </p>
-                    </a>
-                </div>
-
-                <div id="slider-post-4" style="background-image:url('static/imgs/item-grid-row/4.jpg');" class="slider-post">
-                    <a href="">
-                        <p>
-                            برسی محصول جدید مایکروسافت
-                        </p>
-                    </a>
-                </div>
-
-                <div id="slider-post-5" style="background-image:url('static/imgs/item-grid-row/5.jpg');" class="slider-post">
-                    <a href="">
-                        <p>
-                            به روز رسانی جدید گوشی های سامسونگ ، هر آن چه که باید بدانید
-                        </p>
-                    </a>
-                </div>
+                {% endfor %}
                 </div>
             <!-- /---tablight section---/ -->
             <div class="tabligh col-md-3">
                 <div id="tabligh-post-6" class="tabligh-post">
-                    <img src="static/imgs/item-grid-row/sliderTabligh1.gif" alt="">
+                    <img src="{% static 'imgs/item-grid-row/sliderTabligh1.gif' %}" alt="">
                 </div>
                 <div id="tabligh-post-7" class="tabligh-post">
-                    <img src="static/imgs/item-grid-row/sliderTabligh2.gif" alt="">
+                    <img src="{% static 'imgs/item-grid-row/sliderTabligh2.gif' %}" alt="">
                 </div>
             </div>
         </div>
