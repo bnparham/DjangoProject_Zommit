@@ -29,7 +29,7 @@
                             {{ sub_cat.title }}
                         </a>
                     {% else %}
-                        <a href="{{ sub_cat.url_title }}">
+                        <a href="{% url 'home-page' %}{{ sub_cat.url_title }}">
                             {{ sub_cat.title }}
                         </a>
                     {% endif %}
