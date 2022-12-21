@@ -11,6 +11,7 @@ class articleCategory_admin(admin.ModelAdmin):
         ("parent", admin.EmptyFieldListFilter),
         ("is_active")
     ]
+    list_per_page = 10
 
 class article_admin(admin.ModelAdmin):
     list_display = ["title", "slug", "get_category", "is_active", "author", "view_count","is_suggest", "is_slider"]
@@ -18,6 +19,7 @@ class article_admin(admin.ModelAdmin):
     list_filter = [
         ("selected_categories", admin.RelatedOnlyFieldListFilter)
         , "is_active", "is_suggest", "is_slider"]
+    list_per_page = 10
     def get_category(self, obj):
         return [course.title for course in obj.selected_categories.all()]
     def save_model(self, request:HttpRequest, obj:Article, form, change):
