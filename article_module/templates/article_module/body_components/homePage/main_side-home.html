@@ -67,6 +67,26 @@
                 </div>
                 {% endfor %}
 
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-end">
+                      {% if page_obj.has_previous %}
+                          <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">قبلی</a>
+                          </li>
+                      {% endif %}
+
+                    {% for pageNum in paginator.page_range %}
+                        <li class="page-item"><a class="page-link" href="?page={{ pageNum }}">{{ pageNum }}</a></li>
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                      <a class="page-link" href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                    </li>
+                  {% endif %}
+                  </ul>
+                </nav>
+
             </div>
 {% endblock %}
 
